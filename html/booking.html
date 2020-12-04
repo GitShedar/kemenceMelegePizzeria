@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../css/style.css">
+<script rel="stylesheet" href="../js/booking.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    </style>
+  <title>Booking</title>
+</head>
+<body>
+  <div class="flexbox header" >
+    <div class="box logo"><img src="../image/logo.png" alt="logo" width="100">
+    </div>
+    <div class="box name">KEMENCE MELEGE PIZZÉRIA</div>
+    <div class="box navbar">
+    <!-- Navigáció -->
+        <nav class="menu-bar">
+           <ul>
+              <li><a href="../html/index.html">Rólunk</a></li>
+              <li><a href="../html/index.html">Termékeink</a></li>
+              <li><a href="../html/booking.html">Asztalfoglalás</a></li>
+            </ul>
+            </nav>
+    </div>
+  </div>
+
+  <div class="flexbox booking">
+    <div class="box img"><img src="../image/pizza-table.jpg"></div>
+    <div class="box fill-form">
+      <form name="myForm" class="form-container" novalidate>
+        <fieldset class="form">
+          <legend>Foglaljon asztalt egyszerűen</legend>
+    
+          <!--Név -->
+          <div class="inputWithIcon">
+            <span class="help-block">Adja meg vezeték és keresztnevét</span>
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+          </div>
+          <input type="text" name="name" required><br>
+        <span id="nameerror" style="color:#be3019; display:none;">Kérem adja meg Nevét!</span><br>
+    
+          <!--emailcím -->
+          <div class="inputWithIcon">
+            <span class="help-block">Adja meg emailcímét</span>
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+            <input type="email" name="email"><br>
+        <span id="emailerror" style="color:#be3019; display:none;">Kérem adjon meg helyes emailcímet!</span><br>
+          </div>
+    
+          <!--dátum -->
+          <div class="inputWithIcon">
+            <span class="help-block">Adja meg a foglalás dátumát</span>
+            <label for="checkin"></label>
+            <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="true"></i>
+            <input type="date" name="date" id="datepicker" ><br>
+        <span id="dateerror" style="color:#be3019; display:none;">Kérem adjon meg helyes dátumot!</span><br>
+          </div>
+    
+          <!--időpont -->
+          <div class="inputWithIcon">
+            <span class="help-block">Adja meg a foglalás időpontját</span>
+            <label for="time"></label>
+    
+            <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
+    
+            <input type="time" name="time" id="time"><br>
+        <span id="timeerror" style="color:#be3019; display:none;">Kérem adjon meg helyes időpontot!</span><br>
+        <span id="datetimeerror" style="color:#be3019; display:none;">Kérem legalább egy órával előre foglaljon!</span><br>
+          </div>
+    
+          <!--vendégek száma -->
+    
+          <div class="inputWithIcon">
+            <span class="help-block">Adja meg a vendégek számát</span>
+            <label for="guests"></label>
+    
+            <i class="fa fa-users fa-lg fa-fw" aria-hidden="true"></i>
+    
+            <select type="text" id="guests" name="guests" placeholder="Vendég szám">
+    
+              <option value="1">1 fő</option>
+              <option value="2">2 fő</option>
+              <option value="3">3 fő</option>
+              <option value="4">4 fő</option>
+              <option value="5">5 fő</option>
+              <option value="6">6 fő</option>
+              <option value="7">7 fő</option>
+              <option value="8">8 fő</option>
+            </select>
+            <br><br>
+          </div>
+        </fieldset>
+        <!-- ÁSZF elfogadása-->
+        <fieldset class="gdpr-btn">
+          <div class="gdpr-btn">
+    
+            <input type="checkbox" name="gdpr" value="gdpr">
+            <label for="gdpr">Az Általános Szerződési Feltételeket és az Adatkezelési tájékoztatót elolvastam és elfogadom
+            </label>
+            <br>
+        <span id="gdprerror" style="color:#be3019; display:none;">Kérem Fogadja el a Szerződési Feltételeket!</span><br>
+    
+            <!-- Button-->
+            <button type="submit" id="reserve" class="btn">Foglalás</button>
+        </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+
+      <script>
+        // Script----------EmailValidate-------------------------------------- 
+         function ValidateEmail(inputText) {
+                var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if (inputText.value.match(mailformat)) {
+                    //alert("Valid email address!");
+                    //document.myForm.email.focus();
+            document.getElementById("emailerror").style.display="none";
+                    return true;
+                }
+                else {
+            document.getElementById("emailerror").style.display="inline";
+                    document.myForm.email.focus();
+                    return false;
+                }
+            } 
+        
+        function ValidateDate() {
+        mindatetime=new Date(new Date().getTime()+(1000*60*60));
+        if ( document.myForm.date.value=="" ) { 
+          document.getElementById("dateerror").style.display="inline"; 
+        } else {
+          document.getElementById("dateerror").style.display="none";
+        }
+        if ( document.myForm.time.value=="" ) { 
+          document.getElementById("timeerror").style.display="inline"; 
+        } else {
+          document.getElementById("timeerror").style.display="none";
+        }
+        if ( document.myForm.date.value=="" || document.myForm.time.value=="" ) {
+          return false;
+        } else {
+          selecteddatetime=new Date(document.myForm.date.value+" "+document.myForm.time.value);
+          if ( selecteddatetime < mindatetime ) {
+            document.getElementById("datetimeerror").style.display="inline";
+            return false;
+          } else {
+            document.getElementById("datetimeerror").style.display="none";
+            return true;
+          }
+        }
+        }
+        
+        function ValidateForm() {
+        nameValid=false;
+        emailValid=ValidateEmail(document.myForm.email);
+        datetimeValid=ValidateDate();
+        gdprValid=false;
+        if ( document.myForm.name.value=="" ) {
+          document.getElementById("nameerror").style.display="inline";
+        } else {
+          document.getElementById("nameerror").style.display="none";
+          nameValid=true;
+        }
+        if ( ! document.myForm.gdpr.checked ) {
+          document.getElementById("gdprerror").style.display="inline";
+        } else {
+          document.getElementById("gdprerror").style.display="none";
+          gdprValid=true;
+        }
+        if (nameValid && emailValid && datetimeValid && gdprValid) {
+          console.log( document.myForm.name.value+" (email:"+document.myForm.email.value+") asztalt foglalt "+document.myForm.date.value+" napon "+document.myForm.time.value+" időre "+document.myForm.guests.value+" főre a Feltételeket elfogadva!");
+          return true;
+        } else { 
+          return false;
+        }
+        }
+          // Script----------DateValidate--------------------------------------  
+        document.myForm.date.min=new Date().toISOString().split("T")[0];
+        document.myForm.addEventListener("submit",function(e){ if (!ValidateForm()) { e.preventDefault(); return false; }  e.preventDefault(); return false; });
+      </script> 
+
+
+
+
+
+
+
+
+</body>
+</html>

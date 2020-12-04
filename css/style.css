@@ -1,0 +1,353 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: #6d3119;
+}
+h1 {
+  margin-top:80px;
+  text-align: center;
+  font-size: 3em;
+  color:#be3019;
+}
+
+h2 {
+  margin:20px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
+  color:#be3019;
+}
+/* class="flexbox" a Nagymama. beállítjuk a 3 nagy sectiont (header,About,Products, - Booking külön megy a booking.html-be*/
+
+.flexbox {
+    height: 100vh;
+  }
+
+@media only screen and (min-width: 801px) {
+  
+  .flexbox {
+  display: flex;
+  align-content: flex-start; /* main axis-on hol helyezkedjenek el az elemek */
+  justify-content: flex-start; /* cross axis-on hol helyezkedjenek el az elemek */
+  flex-wrap:wrap;
+
+ }
+}
+@media only screen and (max-width: 800px) {
+  
+  .flexbox {
+  display: flex;
+  flex-direction: column;
+ }
+}
+
+/* 1. section Anyu: header */ 
+@media only screen and (min-width: 801px) {
+.header {
+  position:-webkit-sticky;
+  position:sticky;
+  justify-content:space-evenly;
+  top:0;
+  height: 10vh;
+  background-color:#ebded9;
+  color:#6d3119;
+  font-size: 28px;
+  box-shadow: 5px 10px 8px #6d3119;
+   }
+
+ @media only screen and (max-width: 800px) {
+  
+  .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1em;
+  background-color:yellow;
+  color:#6d3119;
+  margin: auto;
+ }
+}
+/*background-color:#ebded9;*/
+
+  /* 1. section Gyerek: logo, name, navbar */ 
+
+  .logo {
+    flex:1;
+  }
+
+  .name {
+    flex:7;
+   }
+
+  .navbar {
+    flex:4;
+  }
+
+  @media only screen and (max-width: 800px) {
+  
+    ul {
+    display: flex;
+   flex-direction: column;
+    text-align:center;
+   }
+  }
+
+  /* 1. section Gyerek: name*/ 
+  .name {
+  margin-right:auto;
+  margin-left:auto;
+  padding-left:350px;
+  font-size: 2em;
+  font-weight: bolder;
+  }
+  /* 1. section Gyerek: logo*/ 
+  .logo img {
+   margin-left:auto;
+   margin-right:auto;
+   padding-top:5px;
+  }
+
+   /* 1. section Gyerek: navbar*/
+   
+  ul {
+    display:flex;
+    list-style:none; 
+  }
+  
+
+
+  a {
+    list-style:none;  
+    text-decoration: none;
+      padding:20px;
+      font-weight: bolder;
+     }
+  a:hover {
+    color: #be3019;
+    background-color: transparent;
+    }
+
+ /*-------------------------- */ 
+  /* 2. section Anyu: about */ 
+.about {
+  height: 90vh;
+  flex-wrap:wrap;
+   }
+
+   @media only screen and (max-width: 800px) {
+   .about {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    flex-direction: column;
+   }
+  }
+
+  .about .list {
+    margin: 30px 20px;
+    font-size: 2em;
+    text-align: center;
+    }
+
+  
+  /* 2. section Gyerek: img, text */ 
+  body .about .box {
+    width: 50%;
+  }
+
+.about img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+button {
+  background-color: #6d3119;
+  color: #8bc34a;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 21px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 80%;
+  opacity: 0.8;
+  z-index:-1;
+
+  
+  }
+
+  button:hover {
+    background-color: #be3019;
+    color: #fff;
+    font-size: 22px;
+    box-shadow: 5px 10px 8px #6d3119;
+  }
+    
+ /*-------------------------- */ 
+ /* 3. section Anyu: products */ 
+ .products {
+   height: 100vh;
+   flex-wrap:wrap;
+  }
+   @media only screen and (max-width: 800px) {
+   .products {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    flex-direction: column;
+   }
+  }
+  /* 3. section Gyerek: table, img */ 
+  .products .box {
+    width: 50%;
+  }
+  .products img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+  }
+  
+.table .products-items {
+  padding:50px;
+  font-size: 1.5em;
+}
+
+
+   /* 4. section Anyu: booking */ 
+ .booking {
+   height: 90vh;
+   flex-wrap:wrap;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .booking {
+     display: flex;
+     flex-direction: column;
+    }
+   }
+
+  /* 4. section Gyerek: img, fill-form */ 
+  body .booking .box {
+    width: 50%;
+  }
+
+  .booking img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+  }
+
+/* ------FORM------- */
+/* A keretek: form konténer és a fieldset formázása */
+
+.fill-form {
+  margin: auto;
+  padding-left: 150px;
+  font-size: 1.1em;
+   
+}
+.form-container {
+  border-radius: 5px;
+  margin: auto;
+  padding: 0 10px;
+}
+
+.form-container fieldset {
+  width: 500px;
+  height: 100%;
+  padding: 10px 25px 0px;
+  background-color:#6d311925;
+}
+
+.form-container fieldset legend {
+  font-size: 1.7em;
+  font-weight: bolder;
+  color:#6d3119;
+ 
+}
+/* Set a style for the form element*/
+fieldset.form input, select { 
+  width:100%;
+  border: 1px solid #e3d3be;
+  border-radius: 4px;
+  margin: 0px 0;
+  outline: none;
+  padding: 8px 8px 8px 50px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  position: relative
+}
+
+.form legend {
+  color:#be3019;
+}
+
+.gdpr-btn {
+  width: 500px;
+  height: 100%;
+  width: 100%;
+  padding: 0px 0px 0px 0 px;
+  border-top: 0;
+
+ }
+
+input:focus {
+  border-color: #8bc34a;
+  box-shadow: 0 0 8px 0 #8bc34a;
+}
+
+select:focus {
+  border-color: #8bc34a;
+  box-shadow: 0 0 8px 0 #8bc34a;
+}
+.inputWithIcon input {
+  padding-left: 40px;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 27px;
+  padding-top:5px;
+  color: #6d3119;
+  transition: 0.3s;
+ font-size: 2em;
+ z-index:2;
+}
+
+.inputWithIcon input[type="text"]:focus + i {
+  color:#8bc34a;
+}
+   
+/* Set a style for the submit button */
+.btn {
+  background-color: #6d3119;
+  color: #8bc34a;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 15px 20px;
+  margin-bottom:20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8
+  }
+
+.btn:hover {
+  color: #8bc34a;
+  background-color: #be3019;
+}
+
